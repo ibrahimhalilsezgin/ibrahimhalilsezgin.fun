@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+
+
+@layer components {
+    .list-comp {
+        @apply list-none mx-10 cursor-pointer hover:bg-slate-900 w-24 h-12 items-center text-center hover:rounded-md p-3
+    }
+}
