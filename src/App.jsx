@@ -4,7 +4,7 @@ import axios from "axios";
 
 function App() {
 
-  axios.post("http://localhost:5000/");
+  axios.post("https://api.ibrahimhalilsezgin.fun/");
 
   return (
     <div>

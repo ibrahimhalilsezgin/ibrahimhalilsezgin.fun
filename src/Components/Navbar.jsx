@@ -42,13 +42,13 @@ const Navbar = () => {
     <div id="navbar-mobile" onClick={onClickOpenNav} className="flex-col space-y-1">
       <span id="nav-toggle" className="btn w-12 h-12 hover:bg-slate-500"> {mobileNavbar ? <TbXboxX /> : <VscThreeBars />}</span>
       <div id="navbar-mobile-button" className="w-full h-12 text-center align-middle gap-3 bg-slate-600 rounded-md hidden hover:bg-slate-400"><a href="https://git.ibrahimhalilsezgin.fun/">Projects</a></div>
-      <div id="navbar-mobile-button" className="w-full h-12 text-center align-middle gap-3 bg-slate-600 rounded-md hidden">TEST</div>
+      <div id="navbar-mobile-button" className="w-full h-12 text-center align-middle gap-3 bg-slate-600 rounded-md hidden hover:bg-slate-400"><a href="https://status.ibrahimhalilsezgin.fun/">Status</a></div>
     </div>
     <div id="navbar" className='flex navbar bg-zinc-700'>
         <div className="navbar-start"></div>
         <div className="navbar-end">
             <li className='list-comp'><a href="https://git.ibrahimhalilsezgin.fun/">Projects</a></li>
-            <li className='list-comp'>Projects</li>
+            <li className='list-comp'><a href="https://status.ibrahimhalilsezgin.fun/">Status</a></li>
         </div>
 
     </div>
@@ -56,4 +56,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default Navbar;

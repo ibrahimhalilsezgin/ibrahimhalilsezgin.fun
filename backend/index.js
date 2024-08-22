@@ -14,11 +14,11 @@ const app = express();
 const spotifyApi = new SpotifyWebApi({
     clientId: config.clientId,
     clientSecret: config.clientSecret,
-    redirectUri: 'http://localhost:5000/callback'
+    redirectUri: 'http://192.168.1.102:5000/callback'
 });
 
 // Bağlantıyı yapın
-mongoose.connect('mongodb://192.168.1.105/');
+mongoose.connect('mongodb://192.168.1.102/');
 
 // Statistikler için şema ve model
 const statsSchema = new mongoose.Schema({
@@ -51,7 +51,11 @@ const initialize = async () => {
 };
 initialize();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://ibrahimhalilsezgin.fun', // İzin verilen orijin
+  methods: ['GET', 'POST'], // İzin verilen HTTP yöntemleri
+  allowedHeaders: ['Content-Type', 'Authorization'], // İzin verilen başlıklar
+}));
 app.use(morgan('dev'));
 app.use(express.json()); // JSON body parsing
 
@@ -226,6 +230,6 @@ app.get('/currentlyPlaying', async (req, res) => {
     }
 });
 
-app.listen(5000, () => {
+app.listen(5000,"0.0.0.0", () => {
     console.log('Server is running on port 5000');
 });

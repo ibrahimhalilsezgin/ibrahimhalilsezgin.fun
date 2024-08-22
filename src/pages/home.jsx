@@ -4,6 +4,7 @@ import Meteors from "@/@/components/magicui/meteors";
 import Navbar from "@/Components/Navbar";
 import axios from "axios";
 
+//  https://api.wakatime.com/api/v1/
 const Home = () => {
   const [stat, setStat] = useState({ visitor: 0 });
   const [spotify, setSpotify] = useState({
@@ -18,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/stats");
+        const { data } = await axios.get("/stats");
         setStat({ visitor: data.visitor });
       } catch (error) {
         console.error('Error fetching stats:', error);
@@ -27,7 +28,7 @@ const Home = () => {
 
     const getSpotify = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/currentlyPlaying');
+        const { data } = await axios.get('/currentlyPlaying');
         setSpotify({
           album: data.track,
           isPlaying: data.is_playing,
@@ -55,6 +56,9 @@ const Home = () => {
     updateAge();
     getStats();
     getSpotify();
+    setInterval(() => {
+      getSpotify();
+    }, 3 * 1000)
   }, []);
 
   useEffect(() => {
@@ -81,15 +85,21 @@ const Home = () => {
   return (
     <>
       <Navbar />
+
       <div className="relative flex h-1/2 w-full flex-col items-center justify-center overflow-hidden  bg-background">
+      <Meteors number={80} />
+
         <span className="space-y-8 bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-4xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10 md:text-6xl lg:text-8xl">
           <h2 className="text-white text-6xl">Ibrahim Halil Sezgin </h2>
           <span id="old" className="text-sm text-white pb-28"></span>
           
           <div>
 
-          <div id="infos" className="stat place-items-center flex flex-row">
-          <div className="max-w-sm bg-gray-900 text-white rounded-lg shadow-md p-4 flex space-x-4 items-center space-y-4 mx-4 md:mx-8 lg:mx-16">
+          <div id="infos" className="stat place-items-center flex flex-col">
+          {
+
+            spotify.image ?    
+            <div className="max-w-sm bg-gray-900 text-white rounded-lg shadow-md p-4 flex space-x-4 items-center space-y-4 mx-4 md:mx-8 lg:mx-16">
             <img src={spotify.image} alt="Song Image" className="w-24 h-24 rounded-lg md:w-32 md:h-32" />
             <div className="text-center">
               <div className="text-lg font-bold">{spotify.album.name}</div>
@@ -106,16 +116,28 @@ const Home = () => {
               </div>
             </div>
           </div>
-            <div className="stat-title text-lg md:text-xl">Ziyaretçi Sayısı</div>
-            <div className="stat-value text-secondary text-sm md:text-lg">
-              <NumberTicker delay={0} duration={1} className="text-white text-lg" value={stat.visitor} />
+
+          :
+
+          <div className="max-w-sm bg-gray-900 text-white rounded-lg shadow-md p-4 flex space-x-4 items-center mx-4 md:mx-8 lg:mx-16">
+          <img src="https://storage.googleapis.com/pr-newsroom-wp/1/2023/05/Spotify_Primary_Logo_RGB_Green.png" alt="Song Image" className="w-24 h-24 rounded-lg md:w-32 md:h-32" />
+          <div className="text-center">
+            <div className="text-lg font-bold">Her Hangi Bir Şarkı Çalmıyor</div>
+            <div className="text-sm text-gray-400">
+              <a className="cursor-pointer" href={"https://open.spotify.com/artist/" + spotify.artist_id.join(",")}>
+                {artistNames}
+              </a>
             </div>
-            <div className="stat-desc text-secondary">↗︎ {stat.visitor} (100%)</div>
           </div>
+        </div>
+
+
+
+          }
+	          </div>
           </div>
           
         </span>
-        <Meteors number={30} />
       
       </div>
     </>
