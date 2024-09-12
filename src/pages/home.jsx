@@ -89,9 +89,9 @@ const Home = () => {
       <div className="relative flex h-1/2 w-full flex-col items-center justify-center overflow-hidden  bg-background">
       <Meteors number={80} />
 
-        <span className="space-y-8 bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-4xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10 md:text-6xl lg:text-8xl">
-          <h2 className="text-white text-6xl">Ibrahim Halil Sezgin </h2>
-          <span id="old" className="text-sm text-white pb-28"></span>
+        <span className="space-y-2 bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-4xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10 md:text-6xl lg:text-8xl">
+          
+          <h2 className="text-white text-6xl pl-28">Ibrahim Halil Sezgin <span className="text-sm text-white">(</span><span id="old" className="text-sm text-white overflow-hidden"></span><span className="text-sm text-white">)</span></h2>
           
           <div>
 
