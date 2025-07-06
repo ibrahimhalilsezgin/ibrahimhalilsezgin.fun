@@ -17,6 +17,7 @@
         "instagram": "https://www.instagram.com/ibrhmhl/",
         "linkedin": "https://www.linkedin.com/in/ibrahimhalilsezgin/",
         "node -v": "Node.js v22.15.1",
+        "erenkarayilan":"?"
 
     }
 
@@ -31,16 +32,28 @@
   }
 
   if (input.trim()) {
+    if(input == "erenkarayilan"){
     const response = commands[input.trim()];
-    const outputPre = document.createElement('pre');
-    outputPre.setAttribute('data-prefix', '>');
+        const outputPre = document.createElement('pre');
+        outputPre.setAttribute('data-prefix', '>');
 
-    const outputCode = document.createElement('code');
-    outputCode.textContent = response || `command not found: ${input}`;
-    outputPre.appendChild(outputCode);
-    container?.appendChild(outputPre);
-  }
+        const outputCode = document.createElement('code');
+        outputCode.textContent = response || `command not found: ${input}`;
+        outputPre.appendChild(outputCode);
+        container?.appendChild(outputPre);
+        document.getElementById('eren')?.setAttribute('src', 'https://www.youtube.com/embed/HMMydN7Zv9o?autoplay=1&loop=1&start=15&playlist=HMMydN7Zv9o')
 
+        }
+        const response = commands[input.trim()];
+        const outputPre = document.createElement('pre');
+        outputPre.setAttribute('data-prefix', '>');
+
+        const outputCode = document.createElement('code');
+        outputCode.textContent = response || `command not found: ${input}`;
+        outputPre.appendChild(outputCode);
+        container?.appendChild(outputPre);
+      }
+      
   const pre = document.createElement('pre');
   pre.setAttribute('data-prefix', '$');
 
@@ -76,7 +89,7 @@
   </div>
 
   {#if show}
-    <div transition:blur={{ duration: 1200, amount: 300, opacity: 0, easing: cubicOut }} class="flex justify-center font-2xl">
+    <div transition:blur={{ duration: 1200, amount: 300, opacity: 0, easing: cubicOut }} class="flex justify-center font-2xl items-center">
     <div class="">
       <div class="flex flex-col p-34"> 
         </div>
@@ -97,7 +110,13 @@
                             {#snippet panel()}
                                 <div class="flex flex-wrap gap-4 text-center">
                                     {#each c as command}
-                                        <div class="bg-white text-black rounded-xl w-23  hover:w-26 transition-all cursor-pointer">{command}</div>
+                                      <div
+                                        class={`bg-white text-black rounded-xl transition-all cursor-pointer ${
+                                          command.length >= 10 ? 'w-34 hover:w-38' : 'w-23 hover:w-26'
+                                        }`}
+                                      >
+                                        {command}
+                                      </div>
                                     {/each}
                                 </div>
                             {/snippet}
@@ -108,11 +127,21 @@
         </div>
           <div>
         </div>
+        
+<iframe width="560" height="315"
+id="eren"
+  src=""
+  frameborder="0"
+  allow="autoplay; encrypted-media"
+  allowfullscreen
+  hidden>
+</iframe>
+
       </div>
 
 
   {/if}
 
-  <div class="flex items-center justify-center font-2xl border-l border-l-[#1a1a1ad5]">
-  </div>
+
+<!-- <iframe autoplay hidden width="560" height="315" src="https://www.youtube.com/embed/HMMydN7Zv9o?si=29OrR8k6ul-1ZY4u&amp;start=15" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </div> -->
 </div>
