@@ -2,7 +2,7 @@
 @import '@fontsource/jetbrains-mono';
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/optional/presets';
-@import '@skeletonlabs/skeleton/themes/reign';
+@import '@skeletonlabs/skeleton/themes/nosh';
 @source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
 
 @plugin "daisyui";
